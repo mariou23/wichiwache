@@ -1,30 +1,24 @@
-radio.onReceivedNumber(function (receivedNumber) {
-    basic.clearScreen()
-    tool = randint(0, 2)
-    if (tool == 0) {
-        basic.showIcon(IconNames.SmallSquare)
-    } else if (tool == 1) {
-        basic.showIcon(IconNames.Square)
-    } else {
-        basic.showIcon(IconNames.Scissors)
-    }
+input.onGesture(Gesture.Shake, function () {
+    basic.showNumber(input.temperature() + 32)
+    basic.showString("f")
 })
-input.onButtonPressed(Button.A, function () {
-    basic.clearScreen()
-    radio.sendString("papel")
+input.onButtonPressed(Button.AB, function () {
+    basic.showNumber(input.temperature())
+    basic.showString("C")
 })
-radio.onReceivedString(function (receivedString) {
-    tool = randint(0, 2)
-    if (0 < 0) {
-    	
-    }
+input.onButtonPressed(Button.B, function () {
+    basic.showNumber(input.temperature() + 273)
+    basic.showString("K")
 })
-radio.onReceivedValue(function (name, value) {
-    basic.clearScreen()
-})
-let tool = 0
-basic.clearScreen()
-radio.setGroup(74)
+let lectura = 0
+led.plotBarGraph(
+lectura,
+1023
+)
 basic.forever(function () {
-	
+    if (input.buttonIsPressed(Button.A)) {
+        basic.clearScreen()
+        basic.pause(500)
+        basic.showNumber(lectura)
+    }
 })
